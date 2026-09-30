@@ -21,11 +21,9 @@ Bookmarks are stored as JSON at:
 
 ## Install
 
-1. Install the [.NET 9 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0) (x64) if you do not have it.
-2. Download `FolderBookmarks.exe` from the [latest release](../../releases/latest).
-3. Run it. There is nothing else to install.
+Download `FolderBookmarks.exe` from the [latest release](../../releases/latest) and run it. Nothing else to install: the exe is self-contained and includes the .NET runtime.
 
-The app uses Microsoft Edge WebView2, which is already present on Windows 10 and 11.
+The UI renders through Microsoft Edge WebView2, which ships with Windows 10 and 11.
 
 ## Build from source
 
@@ -36,7 +34,7 @@ dotnet run
 To produce the single-file exe used in releases:
 
 ```bash
-dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o publish
 ```
 
 ## How it is built
